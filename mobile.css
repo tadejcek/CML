@@ -1,0 +1,112 @@
+@media (max-width: 480px) {
+    div.header {
+        margin-top: 56px;
+    }
+
+    .info-email,
+    .stamp {
+        display: none;
+    }
+
+    .sun-glow {
+        width: 288px;
+        height: 288px;
+        top: 286px;
+    }
+
+    .hero {
+        height: 130px;
+    }
+
+    div.container {
+        margin-top: 0px;
+        padding: 46px 0px 8px;
+    }
+
+    div.container .sun {
+        width: 820px;
+        height: 820px;
+    }
+
+    div.footer .footer-content {
+        font-size: 12px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .hero .text {
+        font-size: 10px;
+        line-height: 9px;
+        top: 45%;
+        left: 20%;
+        padding: 8px;
+    }
+
+    img.block-1 {
+        right: 10%;
+        top: 80%;
+        height: 15px;
+    }
+
+    img.block-2 {
+        top: 130%;
+        left: 15%;
+        height: 24px;
+    }
+
+    img.block-3 {
+        top: 5%;
+        left: 60%;
+        height: 24px;
+    }
+
+    .popup-box {
+        width: calc(100% - 52px);
+        padding: 24px;
+    }
+
+}
+
+@media (min-device-width : 480px) and (max-device-width : 768px) {
+    .stamp {
+        bottom: -90px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+}
+
+@media (min-device-width : 768px) and (max-device-width : 1024px) {
+    .stamp {
+        bottom: -90px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+}
+
+@media (min-device-width : 480px) {
+    .sub-heading {
+        display: block;
+    }
+}
+
+
+
+
+.pre-hidden {
+    opacity: 0;
+}
+
+.pre-hidden-2 {
+    display: none;
+    opacity: 0;
+}
