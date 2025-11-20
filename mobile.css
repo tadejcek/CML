@@ -1,6 +1,10 @@
 @media (max-width: 480px) {
     div.header {
-        margin-top: 56px;
+        /*margin-top: 56px;*/
+    }
+
+    .br-mobile {
+        display: inline;
     }
 
     .info-email,
@@ -11,7 +15,7 @@
     .sun-glow {
         width: 288px;
         height: 288px;
-        top: 286px;
+        top: 230px;
     }
 
     .hero {
@@ -20,12 +24,12 @@
 
     div.container {
         margin-top: 0px;
-        padding: 46px 0px 8px;
+        padding: 90px 0px 8px;
     }
 
     div.container .sun {
-        width: 820px;
-        height: 820px;
+        /*width: 820px;
+        height: 820px;*/
     }
 
     div.footer .footer-content {
@@ -38,6 +42,9 @@
 
     h1 {
         font-size: 40px;
+        height: 216px;
+        line-height: 54px;
+        margin-bottom: 24px;
     }
 
     .hero .text {
@@ -48,6 +55,20 @@
         padding: 8px;
     }
 
+    .paragraph p {
+        line-height: 20px;
+        font-size: 14px;
+        font-style: normal;
+        margin-block-start: 6px;
+        margin-block-end: 6px;
+    }
+
+    .logo-track,
+    .logo-list {
+        gap: 40px;
+    }
+
+
     img.block-1 {
         right: 10%;
         top: 80%;
@@ -55,7 +76,7 @@
     }
 
     img.block-2 {
-        top: 130%;
+        top: 107%;
         left: 15%;
         height: 24px;
     }
@@ -73,29 +94,45 @@
 
 }
 
-@media (min-device-width : 480px) and (max-device-width : 768px) {
+@media (min-width : 480px) and (max-width : 768px) {
     .stamp {
         bottom: -90px;
     }
 
     h1 {
-        font-size: 32px;
+        font-size: 48px;
+    }
+
+    div.container .content {
+        max-width: 400px;
     }
 }
 
-@media (min-device-width : 768px) and (max-device-width : 1024px) {
+@media (min-width : 768px) and (max-width : 1024px) {
     .stamp {
-        bottom: -90px;
+        bottom: -125px;
     }
 
     h1 {
-        font-size: 40px;
+        /*font-size: 40px;*/
+    }
+
+    img.block-2 {
+        top: 100%;
+    }
+
+    div.container .content {
+        max-width: 645px;
     }
 }
 
-@media (min-device-width : 480px) {
-    .sub-heading {
+@media (min-width : 768px) {
+    /*.sub-heading {
         display: block;
+    }*/
+
+    div.container .content {
+        text-align: center;
     }
 }
 

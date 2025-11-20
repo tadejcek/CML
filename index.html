@@ -19,8 +19,6 @@
 </head>
 
 <body>
-
-    <audio id="audio" src="music.mp3"></audio>
     <div class="sun-glow pre-hidden"></div>
 
     <div class="wrapper">
@@ -31,19 +29,6 @@
             </div>
             <div>
                 <a href="mailto:info@comland.com" class="info-email">info@comland.com</a>
-                <!--<button id="soundBtn" class="sound-btn">
-                    <div class="eq-wrapper">
-                        <div class="eq-icon">
-                            <span class="bar" data-i="0"></span>
-                            <span class="bar" data-i="1"></span>
-                            <span class="bar" data-i="2"></span>
-                            <span class="bar" data-i="3"></span>
-                            <span class="bar" data-i="4"></span>
-                        </div>
-
-                        <div class="mute-line"></div>
-                    </div>
-                </button>-->
             </div>
         </div>
 
@@ -60,13 +45,12 @@
         <div class="container">
             <div class="sun"></div>
             <div class="content">
-                <h1 class="title pre-hidden reveal-wrapper">
-                    <span class="reveal-bar"></span>
-                    <span class="title-main">
-                        Razvijamo UI rešitve, ki pomagajo
-                    </span>
-                    <span class="sub-heading rotating-text">krajšati postopke.</span>
+                <h1 class="title pre-hidden">
+                    <span class="reveal-bar-container"></span>
+                    <span class="main-text">Razvijamo <br class="br-mobile">AI rešitve,<br />ki</span>
+                    <span class="rotating-text">krajšajo <br class="br-mobile">postopke</span><span class="dot">.</span>
                 </h1>
+
                 <div class="paragraph pre-hidden">
                     <p>Samo z odgovorno uporabo umetne inteligence bo svet <strong>bolj dostopen in pravičen</strong>.
                         Znanje bo okrepljeno,
@@ -76,6 +60,9 @@
                         uporabe umetne inteligence.</p>
                 </div>
             </div>
+            <div class="down">
+                <img src="blocks/arrow-down.svg" class="down-button pre-hidden">
+            </div>
         </div>
     </div>
 
@@ -84,9 +71,9 @@
             <div class="logo-list">
                 <img src="logotipi-strank/MDDS-logo.svg" style="width: 215px;">
                 <img src="logotipi-strank/vrhovno-drzavno-tozilstvo-logo.svg" style="width: 120px;">
+                <img src="logotipi-strank/sodstvo.svg" style="width: 75px;">
                 <img src="logotipi-strank/EG-logo.svg" style="width: 110px;">
                 <img src="logotipi-strank/ELJ-logo.svg" style="width: 152px;">
-                <img src="logotipi-strank/sodstvo.svg" style="width: 75px;">
                 <img src="logotipi-strank/zrss-logo-white.svg" style="width: 160px;">
                 <img src="logotipi-strank/talum-logo.svg" style="width: 133px;">
                 <img src="logotipi-strank/ELES-logo.svg" style="width: 110px;">
@@ -105,9 +92,9 @@
             <div class="logo-list">
                 <img src="logotipi-strank/MDDS-logo.svg" style="width: 215px;">
                 <img src="logotipi-strank/vrhovno-drzavno-tozilstvo-logo.svg" style="width: 120px;">
+                <img src="logotipi-strank/sodstvo.svg" style="width: 75px;">
                 <img src="logotipi-strank/EG-logo.svg" style="width: 110px;">
                 <img src="logotipi-strank/ELJ-logo.svg" style="width: 152px;">
-                <img src="logotipi-strank/sodstvo.svg" style="width: 75px;">
                 <img src="logotipi-strank/zrss-logo-white.svg" style="width: 160px;">
                 <img src="logotipi-strank/talum-logo.svg" style="width: 133px;">
                 <img src="logotipi-strank/ELES-logo.svg" style="width: 110px;">
@@ -138,20 +125,21 @@
 
     <div class="contact">
         <div class="contact-bubble pre-hidden" id="openPopup">
-            <img src="blocks/icn-contact.svg" class="open" />
+            <img src="blocks/icn-newsletter.svg" class="open" />
             <img src="blocks/icn-close.svg" class="close" />
         </div>
         <div class="popup-overlay" id="popup">
             <div class="popup-box">
-                <h2>Rezervirajte si 30-min brezplačen posvet</h2>
+                <!--<h2>Rezervirajte si 30-min brezplačen posvet</h2>
                 <p>
                     Rezervirajte si sproščen 30-minutni posvet o uporabi AI v vaši organizaciji. Vi izberete termin, ki
                     vam ustreza, mi pa poskrbimo za znanje in ideje. </p>
-                <a href="#" class="popup-btn">Rezervirajte posvet s Calendly</a>
+                <a href="#" class="popup-btn">Rezervirajte posvet s Calendly</a>-->
 
-                <h2>in se naročite se na Comlandov UI-čnik</h2>
+                <h2>Naročite se na Comlandov UI-čnik</h2>
                 <p>
-                    Naš novičnik o odgovorni uporabi umetne inteligence v praksi boste prejemali na tri tedne, od njega
+                    Naš novičnik o odgovorni uporabi umetne inteligence v praksi boste prejemali enkrat na mesec od
+                    njega
                     pa se lahko kadarkoli preprosto odjavite. </p>
 
                 <!-- START - We recommend to place the below code where you want the form in your website html  -->
@@ -251,14 +239,12 @@
         <!-- GSAP CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
         <!-- Lastni JS -->
-        <script src="script-start.js"></script>
-        <script src="script-blocks.js"></script>
-        <script src="script-popup.js"></script>
         <script src="script.js"></script>
-
-
+        <script src="script-popup.js"></script>
 
         <!--<script src="script-audio.js"></script>-->
 

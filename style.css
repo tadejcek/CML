@@ -54,7 +54,7 @@ body {
     margin: 0;
     background: var(--netrual-300, #F8F7F0);
     font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 22px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 125%;
@@ -64,10 +64,14 @@ body {
     flex-direction: column;
 }
 
+.br-mobile {
+  display: none;
+}
+
 .wrapper {
     width: 100%;
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -107,7 +111,7 @@ div.header {
     text-transform: uppercase;
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 25%;
     z-index: 10;
 }
 
@@ -116,15 +120,17 @@ div.header {
     overflow: hidden;
     position: relative;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 div.container .sun {
     border-radius: 100%;
-    border: 2px solid rgba(255, 255, 255, 0.40);
+    /*border: 2px solid rgba(255, 255, 255, 0.40);
     background: linear-gradient(180deg, rgba(255, 220, 67, 0.50) 0%, #FFDC43 4.5%, #FFDC43 77.95%);
     box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.40);
     width: 5073px;
-    height: 5073px;
+    height: 5073px;*/
     
     flex-shrink: 0;
     position: absolute;
@@ -134,19 +140,31 @@ div.container .sun {
     left: 50%;
     transform: translateX(-50%);
 
-    /*border: 2px solid #FFF;
+    border: 2px solid #FFF;
     background: radial-gradient(50% 50% at 50% 50%, #FFDC43 0%, #F9E89D 67.79%, #F8F7F0 100%);
     width: 50px;
-    height: 50px;*/
+    height: 50px;
 }
 
 div.container .content {
     padding: 16px 32px;
     z-index: 10;
     position: relative;
-    max-width: 1440px;
+    max-width: 800px;
     margin: 0 auto;
+    flex: 1;
 }
+
+.down {
+    width: 100%;
+    max-width: 1440px;
+    z-index: 50;
+    position: relative;
+    margin: 0 auto;
+    padding: 16px 32px;
+}
+
+
 
 div.logo-wrapper {
     z-index: 10;
@@ -156,7 +174,7 @@ div.logo-wrapper {
 
 .logo {
     padding: 32px;
-    max-width: 1440px;
+    /*max-width: 1440px;*/
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
@@ -165,13 +183,13 @@ div.logo-wrapper {
 .logo-track {
     display: flex;
     width: max-content;
-    gap: 24px;
+    gap: 48px;
 }
 
 .logo-list {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 48px;
 }
 
 .logo-list img,
@@ -212,31 +230,39 @@ div.footer .footer-content a {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 64px;
     font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    font-weight: 200;
     letter-spacing: 0.5px;
-    margin-bottom: 0px;
+    margin-bottom: 32px;
+    line-height: 84px;
 }
 
-h1 .sub-heading {
-    font-weight: 300;
+.title {
+    position: relative;
+    display: inline-block;
 }
 
 .reveal-bar {
     position: absolute;
-    inset: 0; 
+    left: 0;
+    height: 84px; /* prilagodi po fontu */
     background: #fff;
+    transform: scaleX(0);
     transform-origin: left center;
-    transform: scaleX(0);       
     z-index: 1;
+    pointer-events: none;
 }
 
-.title-main,
-.rotating-text {
+.title .main-text, 
+.title .rotating-text,
+.title .dot {
     position: relative;
-    z-index: 2;
+    z-index: 20;
+}
+
+.dot, .rotating-text {
+    font-weight: 700;
 }
 
 .info-email {
@@ -322,7 +348,7 @@ img.block-1 {
 }
 
 img.block-2 {
-    top: 140%;
+    top: 120%;
     left: 6%;
     height: 40px;
 }
@@ -336,7 +362,7 @@ img.block-3 {
 .stamp {
     position: absolute;
     z-index: 50;
-    bottom: -120px;
+    bottom: -150px;
     right: 60px;
 }
 
@@ -627,3 +653,6 @@ img.block-3 {
   transform: scaleY(1); /* reset */
 }
 
+.down-button, .contact-bubble, .open, .close {
+    cursor: pointer;
+}
