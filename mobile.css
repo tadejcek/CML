@@ -32,6 +32,10 @@
         height: 820px;*/
     }
 
+    .down {
+        text-align: left;
+    }
+
     div.footer .footer-content {
         font-size: 12px;
     }
