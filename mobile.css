@@ -1,15 +1,33 @@
+@media (max-width: 380px) {
+    h1 {
+        font-size: 32px !important;
+    }
+}
+
 @media (max-width: 480px) {
-    div.header {
-        /*margin-top: 56px;*/
+    .header {
+        padding: 16px 24px;
     }
 
-    .br-mobile {
-        display: inline;
+    .header.sticky {
+        margin: 0 24px;
     }
 
-    .info-email,
+    .only-mobile {
+        display: initial;
+    }
+
+    .only-desktop {
+        display: none;
+    }
+
+    /*.info-email,*/
     .stamp {
         display: none;
+    }
+
+    .info-email {
+        font-size: 12px;
     }
 
     .sun-glow {
@@ -24,7 +42,11 @@
 
     div.container {
         margin-top: 0px;
-        padding: 90px 0px 8px;
+        padding: 90px 0 0;
+    }
+
+    div.container .content {
+        padding: 16px 24px;
     }
 
     div.container .sun {
@@ -38,6 +60,7 @@
 
     div.footer .footer-content {
         font-size: 12px;
+        flex: auto;
     }
 
     body {
@@ -45,10 +68,13 @@
     }
 
     h1 {
-        font-size: 40px;
-        height: 216px;
-        line-height: 54px;
+        font-size: 36px;
+        line-height: 48px;
         margin-bottom: 24px;
+    }
+
+    h1.title {
+        height: 144px;
     }
 
     .hero .text {
@@ -96,6 +122,10 @@
         padding: 24px;
     }
 
+    .button {
+        text-align: left;
+    }
+
 }
 
 @media (min-width : 480px) and (max-width : 768px) {
@@ -139,6 +169,7 @@
         text-align: center;
     }
 }
+
 
 
 

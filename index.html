@@ -25,7 +25,7 @@
 
         <div class="header pre-hidden">
             <div>
-                <img src="logo-black.svg" width="136px">
+                <img src="logo-black.svg" width="136px" class="header-logo">
             </div>
             <div>
                 <a href="mailto:info@comland.com" class="info-email">info@comland.com</a>
@@ -33,7 +33,9 @@
         </div>
 
         <div class="hero">
-            <div class="text pre-hidden">DOBRODOŠLI</div>
+            <div style="width: 100%; overflow: hidden;">
+                <div class="text pre-hidden">DOBRODOŠLI</div>
+            </div>
             <div class="blocks pre-hidden">
                 <img src="blocks/icn-odgovornost.svg" class="block-1" />
                 <img src="blocks/icn-pilot.svg" class="block-2" />
@@ -47,17 +49,21 @@
             <div class="content">
                 <h1 class="title pre-hidden">
                     <span class="reveal-bar-container"></span>
-                    <span class="main-text">Razvijamo <br class="br-mobile">AI rešitve,<br />ki</span>
-                    <span class="rotating-text">krajšajo <br class="br-mobile">postopke</span><span class="dot">.</span>
+                    <span class="main-text">Razvijamo AI rešitve, <br />ki</span>
+                    <span class="rotating-text">krajšajo <br class="only-mobile" />postopke</span><span class="dot">.</span>
                 </h1>
 
                 <div class="paragraph pre-hidden">
-                    <p>Samo z odgovorno uporabo umetne inteligence bo svet <strong>bolj dostopen in pravičen</strong>.
-                        Znanje bo okrepljeno,
-                        odločitve informirane, in čas bo vrnjen ljudem.</p>
-                    <p><strong>Prenavljamo spletno stran.</strong> Na njej bomo delili vse kar se nam zdi pomembno za
-                        širitev odgovorne
-                        uporabe umetne inteligence.</p>
+
+                    <p>Samo s premišljeno uporabo umetne inteligence bomo živeli in delovali v <strong>pravičnem
+                            svetu</strong>. Trenutno
+                        <strong>prenavljamo spletno stran</strong>. Prijavite se na naš novičnik ali nas spremljajte na
+                        <a href="https://www.linkedin.com/company/comland-d.o.o.">LinkedIn-u</a>.
+                        Hvala, da ostajate z nami!
+                    </p>
+                </div>
+                <div class="button">
+                    <button class="prijava pre-hidden" id="openPopup">Prijava na novičnik</button>
                 </div>
             </div>
             <div class="down">
@@ -115,21 +121,29 @@
 
     <div class="footer pre-hidden-2">
         <div class="footer-content">
-            <img src="icon-white.svg" width="36px" style="margin-bottom: 16px;"><br />
+            <span class="only-mobile"><img src="icon-white.svg" width="36px" style="margin-bottom: 24px;"><br /></span>
             Comland d.o.o.<br />
             Cesta Ljubljanske brigade 21, Ljubljana, Slovenija<br />
             <a href="mailto:info@comland.com">info@comland.com</a><br />
             +386 (0)1 43 80 140
+            <div class="only-mobile">
+                <a href="privacy-policy.html" style="opacity: 0.6; text-decoration: none; margin-top: 24px; display: block;">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-content footer-2">
+            <a href="https://www.linkedin.com/company/comland-d.o.o."><img src="blocks/icn-linkedin.svg"></a>
+            <a href="privacy-policy.html" style="opacity: 0.6;" class="only-desktop">Privacy Policy</a>
         </div>
     </div>
 
     <div class="contact">
-        <div class="contact-bubble pre-hidden" id="openPopup">
+        <!--<div class="contact-bubble pre-hidden" id="openPopup">
             <img src="blocks/icn-newsletter.svg" class="open" />
             <img src="blocks/icn-close.svg" class="close" />
-        </div>
+        </div>-->
         <div class="popup-overlay" id="popup">
             <div class="popup-box">
+                <img src="blocks/icn-close2.svg" class="close-popup" id="closePopup">
                 <!--<h2>Rezervirajte si 30-min brezplačen posvet</h2>
                 <p>
                     Rezervirajte si sproščen 30-minutni posvet o uporabi AI v vaši organizaciji. Vi izberete termin, ki
@@ -137,7 +151,7 @@
                 <a href="#" class="popup-btn">Rezervirajte posvet s Calendly</a>-->
 
                 <h2>Naročite se na Comlandov UI-čnik</h2>
-                <p>
+                <p style="margin-bottom: 40px;">
                     Naš novičnik o odgovorni uporabi umetne inteligence v praksi boste prejemali enkrat na mesec od
                     njega
                     pa se lahko kadarkoli preprosto odjavite. </p>
@@ -179,7 +193,7 @@
 
                                                 <div class="entry__field">
                                                     <input class="input " type="text" id="EMAIL" name="EMAIL"
-                                                        autocomplete="off" placeholder="EMAIL" data-required="true"
+                                                        autocomplete="off" placeholder="Email" data-required="true"
                                                         required />
                                                     <button
                                                         class="sib-form-block__button sib-form-block__button-with-loader"
@@ -245,6 +259,7 @@
         <!-- Lastni JS -->
         <script src="script.js"></script>
         <script src="script-popup.js"></script>
+        <script src="script-header.js"></script>
 
         <!--<script src="script-audio.js"></script>-->
 

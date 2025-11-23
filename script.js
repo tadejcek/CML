@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out"
     }, "-=0.2");
 
-    tl.to([".contact-bubble", ".down-button"], {
+    tl.to([".prijava", ".down-button"], {
         opacity: 1,
         duration: 1,
         ease: "power2.out"
@@ -97,14 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.to([".logo", ".footer"], {
         opacity: 1,
         duration: 0,
-        display: "block"
+        display: "flex"
     });
-
-    /*tl.to(".wrapper", {
-        height: "auto",
-        duration: 1,
-        ease: "power2.out"
-    });*/
 
     tl.call(startLogoTrack);
 
@@ -116,22 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     tl.call(startStampRotation);
 
-    tl.to(".text", {
-        duration: 0.4,
-        text: "",
-        ease: "none"
-    }, "=1");
-
-    tl.to(".text", {
-        duration: 1,
-        text: "KMALU",
-        ease: "none"
-    });
-
 });
 
 
-
+/*
 function startTextRotation() {
     const phrases = [
         "krepijo znanje",
@@ -144,28 +126,6 @@ function startTextRotation() {
     const el = document.querySelector(".rotating-text");
 
     phrases.forEach((text) => {
-
-        /*tlText.to(el, {
-            duration: 0.6,
-            opacity: 0,
-            y: -10,
-            ease: "power2.out"
-        });
-
-        tlText.to(el, {
-            duration: 0.01,
-            text: text 
-        });
-
-        tlText.to(el, {
-            duration: 0.6,
-            opacity: 1,
-            y: 0,
-            ease: "power2.out"
-        });
-
-        tlText.to({}, { duration: 1.2 }); */
-
         // 1) Fade out / remove old text
         tl.to(el, {
             opacity: 0,
@@ -192,7 +152,72 @@ function startTextRotation() {
         // 3) Pause after typing finishes
         tl.to({}, { duration: 1.2 });
     });
+}*/
+
+function startTextRotation() {
+    const phrases = [
+        "krepijo znanje",
+        "informirajo odločanje",
+        "sproščajo čas ekip",
+        "krajšajo postopke"
+    ];
+
+    const tl = gsap.timeline({ repeat: -1 });
+    const el = document.querySelector(".rotating-text");
+
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+
+    phrases.forEach((text) => {
+        
+        // če je mobile → vstavi <br> pred drugo besedo
+        let mobileText = text;
+        if (isMobile) {
+            const parts = text.split(" ");
+            if (parts.length > 1) {
+                mobileText = parts[0] + "<br>" + parts.slice(1).join(" ");
+            }
+        }
+
+        // 1) fade out
+        tl.to(el, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+
+        // 2) type letter-by-letter
+        tl.to(el, {
+            duration: mobileText.replace(/<br>/g, "").length * 0.06,
+            onStart: () => { el.innerHTML = ""; },
+            onUpdate: function () {
+                const txt = mobileText.replace(/<br>/g, ""); // typing without br
+                const progress = this.progress();
+                const chars = Math.floor(progress * txt.length);
+                
+                // reinject <br> exactly after typing
+                if (isMobile) {
+                    const originalParts = mobileText.split("<br>");
+                    const firstLen = originalParts[0].length;
+
+                    if (chars <= firstLen) {
+                        el.innerHTML = txt.slice(0, chars);
+                    } else {
+                        el.innerHTML = 
+                            originalParts[0] + "<br>" + txt.slice(firstLen, chars);
+                    }
+                } else {
+                    el.innerHTML = txt.slice(0, chars);
+                }
+            },
+            opacity: 1,
+            ease: "none"
+        });
+
+        // 3) pause
+        tl.to({}, { duration: 1.2 });
+    });
 }
+
 
 /*function startLogoTrack() {
     gsap.to(".logo-track", {
@@ -231,8 +256,8 @@ function startStampRotation() {
 
 function startDiagonalReveal() {
     const isMobile = window.matchMedia("(max-width: 480px)").matches;
-    const lineCount = isMobile ? 4 : 2;
-    const lineHeight = isMobile ? 54 : 84; // višina ene “vrstice” v px
+    const lineCount = isMobile ? 3 : 2;
+    const lineHeight = isMobile ? 48 : 84; // višina ene “vrstice” v px
 
     const title = document.querySelector(".title");
     if (!title) return;
@@ -304,14 +329,14 @@ function startBlocks() {
         const time = gsap.ticker.frame / 60;
 
         // MUCH smaller wiggle values (more elegant)
-        const b1WiggleX = Math.sin(time * 1.3) * 2.5;
-        const b1WiggleY = Math.cos(time * 1.5) * 1.7;
+        const b1WiggleX = Math.sin(time * 1.3) * 4.5;
+        const b1WiggleY = Math.cos(time * 1.5) * 3.7;
 
-        const b2WiggleX = Math.sin(time * 1.7) * 2.2;
-        const b2WiggleY = Math.cos(time * 1.1) * 1.5;
+        const b2WiggleX = Math.sin(time * 1.7) * 4.2;
+        const b2WiggleY = Math.cos(time * 1.1) * 3.5;
 
-        const b3WiggleX = Math.sin(time * 1.2) * 2.4;
-        const b3WiggleY = Math.cos(time * 1.8) * 1.8;
+        const b3WiggleX = Math.sin(time * 1.2) * 4.4;
+        const b3WiggleY = Math.cos(time * 1.8) * 3.8;
 
         gsap.to(b1, {
             x: relX * 40 + b1WiggleX,
@@ -342,8 +367,69 @@ function startBlocks() {
 
 function startText() {
 
-    const t = document.querySelector(".text");
+    let tl2 = gsap.timeline({
+        onComplete: () => {
+            // po koncu tl2 počakamo 0.8s, nato zaženemo tl3
+            gsap.delayedCall(0.8, () => tl3.play());
+        }
+    });
 
+
+    tl2.to(".text", {
+        x: window.matchMedia("(max-width: 480px)").matches ? 220 : 900,          // premik v desno
+        opacity: 0,
+        duration: 2,
+        ease: "power2.inOut"
+    })
+
+    // 2) instantly premik na levo priprava na slide-in
+    tl2.set(".text", {
+        x: -200           // start levo izven ekrana
+    })
+
+    // 3) slide-in iz leve → v center
+    tl2.to(".text", {
+        x: 0,
+        opacity: 1,
+        duration: 1.6,
+        ease: "power2.out"
+    });
+
+    tl2.to(".text", {
+        duration: 0.4,
+        text: "",
+        ease: "none"
+    }, "=1");
+
+    tl2.to(".text", {
+        duration: 1,
+        text: "KMALU BO",
+        ease: "none"
+    });
+
+    let tl3 = gsap.timeline({
+        repeat: -1,
+        repeatDelay: 0.8,
+        paused: true     // zelo pomembno!
+    });
+
+    tl3.to(".text", {
+        x: window.matchMedia("(max-width: 480px)").matches ? 220 : 900,          // premik v desno
+        opacity: 0,
+        duration: 2,
+        ease: "power2.inOut"
+    }).set(".text", {
+        x: -200           // start levo izven ekrana
+    }).to(".text", {
+        x: 0,
+        opacity: 1,
+        duration: 1.6,
+        ease: "power2.out"
+    });
+
+
+    /*
+    
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
 
@@ -369,5 +455,5 @@ function startText() {
             overwrite: true
         });
 
-    });
+    });*/
 }
