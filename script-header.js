@@ -4,7 +4,7 @@ let headerAnim = gsap.timeline({ paused: true });
 headerAnim.to(".header", {
     backgroundColor: "rgba(255, 255, 255, 1)",
     borderRadius: 80,
-    top: "24px",
+    top: window.matchMedia("(max-width: 480px)").matches ? "16px" : "24px",
     margin: window.matchMedia("(max-width: 480px)").matches ? "0 24px" : "0 32px",
     with: "auto",
     padding: window.matchMedia("(max-width: 480px)").matches ? "16px" : "16px 24px",
@@ -23,6 +23,13 @@ headerAnim.to(".header div:first-child", {
     duration: 0.35,
     ease: "power2.out"
 }, "<"); 
+
+
+headerAnim.to(".down", {
+    opacity: 0,
+    duration: 0.35,
+    ease: "power2.out"
+}, "<");
 
 
 ScrollTrigger.create({

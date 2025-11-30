@@ -34,8 +34,9 @@ closeButton.addEventListener("click", () => {
     }
 });
 
-overlay.addEventListener("click", () => {
-    if (isOpen) {
+overlay.addEventListener("click", (e) => {
+    console.log("overlay")
+    if (!box.contains(e.target) && isOpen) {
         isOpen = false;
         tl2.reverse();
     }

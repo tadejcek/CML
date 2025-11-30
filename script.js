@@ -15,14 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tl = gsap.timeline();
 
-    /*tl.to(".sun", {
-        width: 50,
-        height: 50,
-        duration: 0,
-        background: "radial-gradient(50% 50% at 50% 50%, #FFDC43 0%, #F9E89D 67.79%, #F8F7F0 100%)",
-        borderColor: "#fff"
-    });*/
-
     tl.to(".sun", {
         width: 300,
         height: 300,
@@ -41,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.to(".sun", {
         width: isMobile ? 820 : 5073,
         height: isMobile ? 820 : 5073,
-        duration: 1.2,
+        duration: 2,
         ease: "power2.out"
     });
 
@@ -86,13 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out"
     }, "-=0.2");
 
+    tl.call(startText);
+
     tl.to([".prijava", ".down-button"], {
         opacity: 1,
         duration: 1,
         ease: "power2.out"
     }, "-=0.2");
-
-    tl.call(startText);
 
     tl.to([".logo", ".footer"], {
         opacity: 1,
@@ -168,7 +160,7 @@ function startTextRotation() {
     const isMobile = window.matchMedia("(max-width: 480px)").matches;
 
     phrases.forEach((text) => {
-        
+
         // če je mobile → vstavi <br> pred drugo besedo
         let mobileText = text;
         if (isMobile) {
@@ -187,13 +179,13 @@ function startTextRotation() {
 
         // 2) type letter-by-letter
         tl.to(el, {
-            duration: mobileText.replace(/<br>/g, "").length * 0.06,
+            duration: mobileText.replace(/<br>/g, "").length * 0.09,
             onStart: () => { el.innerHTML = ""; },
             onUpdate: function () {
                 const txt = mobileText.replace(/<br>/g, ""); // typing without br
                 const progress = this.progress();
                 const chars = Math.floor(progress * txt.length);
-                
+
                 // reinject <br> exactly after typing
                 if (isMobile) {
                     const originalParts = mobileText.split("<br>");
@@ -202,7 +194,7 @@ function startTextRotation() {
                     if (chars <= firstLen) {
                         el.innerHTML = txt.slice(0, chars);
                     } else {
-                        el.innerHTML = 
+                        el.innerHTML =
                             originalParts[0] + "<br>" + txt.slice(firstLen, chars);
                     }
                 } else {
@@ -369,6 +361,44 @@ function startText() {
 
     let tl2 = gsap.timeline({
         onComplete: () => {
+            gsap.delayedCall(0.2, () => tl3.play());
+        }
+    });
+
+    tl2.to(".text", {
+        scale: 1.15,
+        duration: 1.2,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: 1
+    });
+
+    tl2.to(".text", {
+        duration: 0.4,
+        text: "",
+        ease: "none"
+    }, "=1");
+
+    tl2.to(".text", {
+        duration: 1,
+        text: "KMALU BO",
+        ease: "none"
+    });
+
+    let tl3 = gsap.timeline({
+        paused: true     // zelo pomembno!
+    });
+
+    tl3.to(".text", {
+        scale: 1.15,
+        duration: 1.2,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: -1
+    });
+
+    /*let tl2 = gsap.timeline({
+        onComplete: () => {
             // po koncu tl2 počakamo 0.8s, nato zaženemo tl3
             gsap.delayedCall(0.8, () => tl3.play());
         }
@@ -425,35 +455,7 @@ function startText() {
         opacity: 1,
         duration: 1.6,
         ease: "power2.out"
-    });
-
-
-    /*
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-
-    document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    gsap.ticker.add(() => {
-        const relX = mouseX / window.innerWidth - 0.5;
-        const relY = mouseY / window.innerHeight - 0.5;
-
-        const time = gsap.ticker.frame / 60;
-
-        const tWiggleX = Math.sin(time * 0.9) * 2.2;
-        const tWiggleY = Math.cos(time * 1.4) * 1.6;
-
-        gsap.to(t, {
-            x: relX * 80 + tWiggleX,
-            y: relY * 100 + tWiggleY,
-            duration: 1.8,
-            ease: "power3.out",
-            overwrite: true
-        });
-
     });*/
+
+
 }
