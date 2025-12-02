@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tl = gsap.timeline();
 
-    tl.to(".sun", {
+    /*tl.to(".sun", {
         width: 300,
         height: 300,
         duration: 1.2,
@@ -25,9 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.to(".sun", {
         background: "linear-gradient(180deg, rgba(255, 220, 67, 0.50) 0%, #FFDC43 4.5%, #FFDC43 77.95%)",
         borderColor: "rgba(255, 255, 255, 0.40)",
-        boxShadow: "0 0 6px 2px rgba(255, 255, 255, 0.40)",
-        duration: 0,
-        ease: "none"
+        boxShadow: "0 0 6px 2px rgba(255, 255, 255, 0.40)"
     });
 
     tl.to(".sun", {
@@ -35,6 +33,38 @@ document.addEventListener("DOMContentLoaded", function () {
         height: isMobile ? 820 : 5073,
         duration: 2,
         ease: "power2.out"
+    });*/
+
+    /* 1) Rast sonca IZ 50px DO 300px */
+    tl.to(".sun", {
+        width: 300,
+        height: 300,
+        duration: 1.2,
+        ease: "power2.out"
+    });
+
+    /* --- FADE se zgodi MED tem tweenom --- */
+
+    /* 2) Radial -> fade out */
+    tl.to(".sun-radial", {
+        opacity: 0,
+        duration: 1.2,      // enako kot rast
+        ease: "power2.inOut"
+    }, "<");                // začni ISTOČASNO kot rast
+
+    /* 3) Linear -> fade in */
+    tl.to(".sun-linear", {
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.inOut"
+    }, "<");                // tudi istočasno
+
+    /* 4) Nadaljnja rast linear-gradient sonca */
+    tl.to(".sun", {
+        width: isMobile ? 820 : 5073,
+        height: isMobile ? 820 : 5073,
+        duration: 2,
+        ease: "sine.inOut"
     });
 
     // 4) Sun-glow fade-in (rahlo overlap z rastjo sonca)
